@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">
+  <style>:root{--paper:oklch(99% .004 250);--ink:oklch(28% .01 250);--muted:oklch(58% .01 250);--rule:oklch(88% .01 250);--blue:oklch(58% .18 250);--red:oklch(61% .22 25);--yellow:oklch(82% .17 90);--green:oklch(62% .16 145)}text{font-family:Arial,sans-serif}</style>
+  <rect width="1200" height="720" fill="var(--paper)"/>
+  <text x="70" y="62" font-size="18" fill="var(--ink)">About</text><text x="138" y="62" font-size="18" fill="var(--ink)">Store</text>
+  <circle cx="1090" cy="54" r="18" fill="var(--blue)"/><g fill="var(--ink)"><circle cx="1028" cy="48" r="3"/><circle cx="1040" cy="48" r="3"/><circle cx="1052" cy="48" r="3"/><circle cx="1028" cy="60" r="3"/><circle cx="1040" cy="60" r="3"/><circle cx="1052" cy="60" r="3"/></g>
+  <text x="370" y="275" font-size="96" font-weight="700"><tspan fill="var(--blue)">S</tspan><tspan fill="var(--red)">e</tspan><tspan fill="var(--yellow)">a</tspan><tspan fill="var(--blue)">r</tspan><tspan fill="var(--green)">c</tspan><tspan fill="var(--red)">h</tspan></text>
+  <rect x="300" y="320" width="600" height="68" rx="34" fill="var(--paper)" stroke="var(--rule)" stroke-width="2"/>
+  <circle cx="340" cy="354" r="11" fill="none" stroke="var(--muted)" stroke-width="3"/><path d="m348 362 10 10" stroke="var(--muted)" stroke-width="3"/>
+  <path d="M846 341v22a12 12 0 0 0 24 0v-22" fill="none" stroke="var(--blue)" stroke-width="4" stroke-linecap="round"/>
+  <rect x="414" y="420" width="168" height="46" rx="6" fill="oklch(95% .006 250)"/><rect x="598" y="420" width="188" height="46" rx="6" fill="oklch(95% .006 250)"/>
+  <text x="441" y="449" font-size="17" fill="var(--ink)">Search the web</text><text x="622" y="449" font-size="17" fill="var(--ink)">Try something new</text>
+  <text x="430" y="520" font-size="15" fill="var(--muted)">A familiar place to begin.</text>
+</svg>
