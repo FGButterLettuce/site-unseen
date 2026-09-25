@@ -34,9 +34,9 @@ function homeTemplate() {
     <main id="main" class="home-shell">
       <section class="intro reveal" style="--i: 0">
         <div class="character" aria-hidden="true"><span></span><span></span></div>
-        <p class="intro__lede">Tiny fragment. Familiar feeling.</p>
+        <p class="intro__lede">Real screenshot. Tiny fragment.</p>
         <h1>How well do you know the web?</h1>
-        <p class="intro__copy">Name five iconic websites from tightly cropped interface clues. Every miss reveals a little more.</p>
+        <p class="intro__copy">Name five iconic websites from real, tightly cropped public pages. Every miss reveals a little more.</p>
         <div class="home-actions">
           <button class="btn btn--primary" data-action="start-daily">Play today’s five <span aria-hidden="true">→</span></button>
           <button class="btn btn--soft" data-action="start-free">Shuffle five</button>
@@ -46,14 +46,14 @@ function homeTemplate() {
       <section class="sample reveal" style="--i: 1" aria-labelledby="sample-title">
         <div class="sample__copy">
           <h2 id="sample-title">You’ve seen this before.</h2>
-          <p>Maybe not this close. Clues are original interface reconstructions with no account data or private screens.</p>
+          <p>Maybe not this close. Every clue comes from a fresh, logged-out public browsing session.</p>
           <button class="text-action" data-action="open-rules">See how scoring works <span aria-hidden="true">↗</span></button>
         </div>
         <figure class="sample__fragment">
-          <svg viewBox="780 320 145 80" role="img" aria-label="A tiny cropped website interface example">
-            <image href="${assetUrl("clues/google.svg")}" width="1200" height="720" />
+          <svg viewBox="780 238 190 89" role="img" aria-label="A tightly cropped public Google screenshot">
+            <image href="${assetUrl("clues/google.jpg")}" width="1200" height="720" />
           </svg>
-          <figcaption>One fragment. Three reveals.</figcaption>
+          <figcaption>Real public capture. Three reveals.</figcaption>
         </figure>
       </section>
 
@@ -106,10 +106,13 @@ function gameTemplate() {
         </div>
 
         <figure class="clue-frame" data-reveal="${state.revealIndex}">
-          <svg id="clue-viewer" viewBox="${crop}" role="img" aria-label="Cropped interface clue, reveal ${state.revealIndex + 1} of ${clue.crops.length}">
-            <image href="${assetUrl(clue.asset)}" width="1200" height="720" />
-          </svg>
-          <figcaption>The crop expands after a miss. Text may be intentionally abstracted.</figcaption>
+          <div class="clue-canvas">
+            <span class="capture-stamp" aria-hidden="true">PUBLIC WEB · REAL CAPTURE</span>
+            <svg id="clue-viewer" viewBox="${crop}" role="img" aria-label="Cropped real website screenshot, reveal ${state.revealIndex + 1} of ${clue.crops.length}">
+              <image href="${assetUrl(clue.asset)}" width="1200" height="720" />
+            </svg>
+          </div>
+          <figcaption>The crop expands after a miss. Captured in a clean, logged-out browser.</figcaption>
         </figure>
 
         <form class="guess-form" data-action="guess" novalidate>
@@ -139,11 +142,12 @@ function answerTemplate(result) {
         <h1>${result.solved ? "That’s it." : `It was ${clue.answer}.`}</h1>
         <div class="answer-card__layout">
           <figure class="answer-image">
-            <img src="${assetUrl(clue.asset)}" width="1200" height="720" alt="Full synthetic reconstruction for ${clue.answer}" />
+            <img src="${assetUrl(clue.asset)}" width="1200" height="720" alt="Full public-page screenshot of ${clue.answer}" />
           </figure>
           <div class="answer-copy">
             ${result.solved ? `<p class="answer-name">${clue.answer}</p>` : ""}
             <p>${clue.fact}</p>
+            <a class="text-action" href="${clue.source}" target="_blank" rel="noreferrer">View captured page <span aria-hidden="true">↗</span></a>
             <button class="btn btn--primary" data-action="next-round">${state.roundIndex === state.rounds.length - 1 ? "See results" : "Next clue"} <span aria-hidden="true">→</span></button>
           </div>
         </div>
@@ -187,7 +191,7 @@ function footerTemplate() {
   return `
     <footer class="foot-marquee" aria-label="Site footer">
       <div class="foot-marquee__track" aria-hidden="true"><span>${phrase.repeat(3)}</span><span>${phrase.repeat(3)}</span></div>
-      <p class="visually-hidden">Site Unseen. Original synthetic clues. No affiliation with the websites shown.</p>
+      <p class="visually-hidden">Site Unseen. Real public-page clues. No affiliation with the websites shown.</p>
     </footer>
   `;
 }
@@ -205,7 +209,7 @@ function rulesDialogTemplate() {
           <li>A miss reveals more context and costs points.</li>
           <li>Solve five sites, then share your spoiler-free score.</li>
         </ol>
-        <p>Every clue is an original SVG reconstruction made with synthetic text. No private screens, accounts, or user data are used.</p>
+        <p>Every clue is captured from a public, logged-out page in a clean browser session. No private screens, accounts, or user data are used.</p>
       </div>
     </dialog>
   `;

@@ -37,6 +37,8 @@ h1, h2 {
 h1 { font-size: var(--text-display); font-weight: 700; }
 h2 { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 700; }
 a { color: inherit; }
+::selection { background: var(--color-accent); color: var(--color-accent-ink); }
+input { caret-color: var(--color-focus); }
 
 :focus-visible {
   outline: 3px solid var(--color-focus);
@@ -247,13 +249,38 @@ a { color: inherit; }
 .mono-label { font-family: var(--font-label); font-size: var(--text-xs); letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-muted); }
 .reveal-count { flex: 0 0 auto; color: var(--color-ink-soft); font-weight: 600; }
 .clue-frame { margin: 0; }
+.clue-canvas {
+  position: relative;
+  padding: var(--space-xs);
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  background: var(--color-ink);
+  box-shadow: 0 1.5rem 3rem -2rem var(--color-shadow);
+}
 .clue-frame svg {
   width: 100%;
   aspect-ratio: 16 / 7.5;
-  border: var(--rule-thick) solid var(--color-ink);
-  border-radius: var(--radius-card);
+  border-radius: calc(var(--radius-card) - var(--space-xs));
   background: var(--color-paper-2);
-  box-shadow: 0 1rem 2.5rem -2rem var(--color-shadow);
+}
+.capture-stamp {
+  position: absolute;
+  inset-block-start: var(--space-md);
+  inset-inline-start: var(--space-md);
+  z-index: 1;
+  padding: 0.35rem 0.55rem;
+  border: 1px solid rgb(255 255 255 / 20%);
+  border-radius: 0.25rem;
+  background: rgb(22 21 18 / 82%);
+  color: #fff;
+  font-family: var(--font-label);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  backdrop-filter: blur(6px);
+}
+.clue-frame[data-reveal] .clue-canvas {
+  animation: clue-focus var(--dur-long) var(--ease-out);
 }
 .guess-form { margin-block-start: var(--space-xl); }
 .guess-form label { display: block; margin-block-end: var(--space-xs); font-weight: 600; }
@@ -363,6 +390,10 @@ dialog::backdrop { background: var(--color-overlay); }
 
 .reveal { opacity: 0; transform: translateY(8px); animation: reveal var(--dur-long) var(--ease-out) forwards; animation-delay: calc(var(--i, 0) * 80ms); }
 @keyframes reveal { to { opacity: 1; transform: none; } }
+@keyframes clue-focus {
+  from { opacity: 0.72; transform: scale(0.992); }
+  to { opacity: 1; transform: none; }
+}
 @keyframes character-breathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.04); } }
 @keyframes foot-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @keyframes star-burst {

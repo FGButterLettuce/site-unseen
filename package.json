@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "capture:clues": "node scripts/capture-clues.mjs",
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
