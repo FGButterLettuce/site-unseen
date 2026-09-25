@@ -2,6 +2,8 @@
 
 A small browser game about recognizing iconic websites from tiny interface fragments. Each wrong guess expands the crop. Fewer reveals and faster answers score more points.
 
+Play it at [fgbutterlettuce.github.io/site-unseen](https://fgbutterlettuce.github.io/site-unseen/).
+
 ## Play locally
 
 ```bash

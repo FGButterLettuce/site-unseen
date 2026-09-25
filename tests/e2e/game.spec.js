@@ -19,3 +19,23 @@ test("opens the rules dialog and supports a mobile viewport", async ({ page }) =
   const bodyWidth = await page.evaluate(() => document.body.scrollWidth);
   expect(bodyWidth).toBeLessThanOrEqual(320);
 });
+
+for (const width of [320, 375, 414, 768]) {
+  test(`keeps the home screen inside a ${width}px viewport`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 800 });
+    await page.goto("/");
+    const dimensions = await page.evaluate(() => ({
+      scrollWidth: document.documentElement.scrollWidth,
+      clientWidth: document.documentElement.clientWidth,
+      primaryWraps: document.querySelector('[data-action="start-daily"]').getClientRects().length > 1,
+    }));
+    expect(dimensions.scrollWidth).toBeLessThanOrEqual(dimensions.clientWidth);
+    expect(dimensions.primaryWraps).toBe(false);
+  });
+}
+
+test("keeps the complete hero action visible at 1280 × 800", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto("/");
+  await expect(page.getByRole("button", { name: "Play today’s five" })).toBeInViewport();
+});
